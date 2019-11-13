@@ -26,6 +26,6 @@ class RandomPermutation {
 }
 
 fun main() {
-    val randomPermutation = RandomPermutation.randomPermutation(10000000)
-    FileUtils.writeToFile(randomPermutation.joinToString(","), "10000000numbers.txt")
+    val randomPermutation = RandomPermutation.randomPermutation(500000)
+    FileUtils.writeToFile(randomPermutation.joinToString(","), "500000numbers.txt")
 }
