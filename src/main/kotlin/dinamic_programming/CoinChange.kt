@@ -22,7 +22,7 @@ class CoinChange {
 
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val coins: IntArray = intArrayOf(5, 10, 25, 50, 100, 200)
     val currency: Int = 20
     val possibleValues = CoinChange.getPossibleValues(currency, coins)
