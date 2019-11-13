@@ -20,7 +20,7 @@ class FileUtils {
         fun readListFromFile(fileName: String): List<Int> {
             val filePath = "src/main/resources/$fileName"
             val myFile = File(filePath)
-            return myFile.readLines().map { Integer.parseInt(it) }
+            return myFile.readText().split(",").map { Integer.parseInt(it) }
         }
     }
 }

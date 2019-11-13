@@ -15,6 +15,9 @@ class InsertionSort {
                     if (input[j] > item) {
                         input[j + 1] = input[j]
                         input[j] = item
+                    } else {
+                        //Stop when we find an element which is lesser
+                        break
                     }
                 }
             }
@@ -24,7 +27,7 @@ class InsertionSort {
 }
 
 fun main() {
-    val array = FileUtils.readIntArrayFromFile("1000numbers.txt")
+    val array = FileUtils.readIntArrayFromFile("10numbers.txt")
     val insertionSort = InsertionSort.insertionSort(array)
     println(insertionSort.joinToString(","))
 }
