@@ -1,0 +1,8 @@
+.idea
+build/
+#Removing Gradle generated stuff
+.gradle
+gradle
+gradlew
+gradlew.bat
+
