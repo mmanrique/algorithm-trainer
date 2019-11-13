@@ -1,6 +1,6 @@
 package sorting
 
-import file.FileUtils
+import verifications.SortedVerification
 
 class MergeSort {
 
@@ -43,16 +43,5 @@ class MergeSort {
 }
 
 fun main() {
-    val array = FileUtils.readIntArrayFromFile("10numbers.txt")
-    val currentTimeMillis = System.currentTimeMillis()
-    val mergeSort = MergeSort.mergeSort(array)
-    val nextCurrentTimeMillis = System.currentTimeMillis()
-    val delta = nextCurrentTimeMillis - currentTimeMillis
-    println("Took this many millis $delta")
-    for (index in mergeSort.indices) {
-        if (mergeSort[index] != index + 1) {
-            println("FAILED")
-        }
-    }
-    println(mergeSort.joinToString(","))
+    SortedVerification.sortArray { MergeSort.mergeSort(it) }
 }

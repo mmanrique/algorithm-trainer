@@ -1,6 +1,6 @@
 package sorting
 
-import file.FileUtils
+import verifications.SortedVerification
 
 class SelectionSort {
     companion object {
@@ -25,7 +25,5 @@ class SelectionSort {
 }
 
 fun main() {
-    val array = FileUtils.readIntArrayFromFile("1000numbers.txt")
-    val selectionSort = SelectionSort.selectionSort(array)
-    println(selectionSort.joinToString(","))
+    SortedVerification.sortArray { SelectionSort.selectionSort(it) }
 }
