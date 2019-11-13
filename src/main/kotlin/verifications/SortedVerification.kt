@@ -9,6 +9,7 @@ import kotlin.system.exitProcess
 
 class SortedVerification {
     companion object {
+        //Add any large dataset in this list if you want
         private val testCases: Array<String> = arrayOf(
                 "10numbers.txt",
                 "1000numbers.txt",
@@ -21,24 +22,25 @@ class SortedVerification {
             val executor = Executors.newSingleThreadExecutor()
             val tasks = mutableListOf<Callable<Array<Int>>>()
             for (testCase in testCases) {
+                println("$testCase: Reading file ")
+                val array = FileUtils.readIntArrayFromFile(testCase)
+
                 val task = Callable<Array<Int>> {
-                    println("Testing with $testCase")
                     val currentTimeMillis = System.currentTimeMillis()
-                    val invoke: Array<Int> = mainFunction.invoke(FileUtils.readIntArrayFromFile(testCase))
+                    val invoke: Array<Int> = mainFunction.invoke(array)
                     val nextCurrentTimeMillis = System.currentTimeMillis()
                     val delta = nextCurrentTimeMillis - currentTimeMillis
-                    val sorted = verifySortedArray(invoke)
-                    if (!sorted) {
-                        println("Failed to Sort")
-                    } else {
-                        println("$testCase: Took this many millis $delta")
-                    }
+                    println("$testCase: Took $delta milliseconds")
                     invoke
                 }
-
+                println("$testCase: Starting Test")
                 val submit: Future<Array<Int>> = executor.submit(task)
                 try {
-                    submit.get(1, TimeUnit.MINUTES)
+                    val result: Array<Int> = submit.get(1, TimeUnit.MINUTES)
+                    val sorted = verifySortedArray(result)
+                    if (!sorted) {
+                        println("Failed to Sort")
+                    }
                 } catch (e: Exception) {
                     println("$testCase took too long")
                     exitProcess(1)

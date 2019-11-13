@@ -5,4 +5,5 @@ build/
 gradle
 gradlew
 gradlew.bat
-
+##Add very large files here.
+src/main/resources/20000000numbers.txt
