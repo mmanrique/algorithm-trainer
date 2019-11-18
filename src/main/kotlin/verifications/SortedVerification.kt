@@ -20,9 +20,17 @@ class SortedVerification {
                 "1000000_repeat_numbers.txt",
                 "2000000_inorder_numbers.txt")
 
+        fun sortSmallArray(mainFunction: (Array<Int>) -> Array<Int>) {
+            sortArray(mainFunction, arrayOf("10numbers.txt"))
+        }
+
         fun sortArray(mainFunction: (Array<Int>) -> Array<Int>) {
+            sortArray(mainFunction, uniqueTestCases)
+        }
+
+        private fun sortArray(mainFunction: (Array<Int>) -> Array<Int>, testCases: Array<String>) {
             val executor = Executors.newSingleThreadExecutor()
-            for (testCase in uniqueTestCases) {
+            for (testCase in testCases) {
                 println("$testCase: Reading file ")
                 val array = FileUtils.readIntArrayFromFile(testCase)
                 val task = Callable<Array<Int>> {
