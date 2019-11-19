@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-    public static Integer[] mergeSort(Integer[] array) {
+    private static Integer[] mergeSort(Integer[] array) {
         if (array.length <= 1) {
             return array;
         }
