@@ -17,6 +17,7 @@ class SortedVerification {
                 "500000numbers.txt",
                 "1000000numbers.txt",
                 "10000000numbers.txt",
+                "20000000numbers.txt",
                 "1000000_repeat_numbers.txt",
                 "2000000_inorder_numbers.txt")
 
