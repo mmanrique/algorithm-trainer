@@ -10,15 +10,11 @@ class InsertionSort {
             for (i in input.indices) {
                 //Iterate backwards and swap the element
                 val item = input[i]
-                for (j in i - 1 downTo 0) {
-                    //If it is greater than the element
-                    if (input[j] > item) {
-                        input[j + 1] = input[j]
-                        input[j] = item
-                    } else {
-                        //Stop when we find an element which is lesser
-                        break
-                    }
+                var j = i - 1
+                while (j >= 0 && input[j] > item) {
+                    input[j + 1] = input[j]
+                    input[j] = item
+                    j--
                 }
             }
             return input
