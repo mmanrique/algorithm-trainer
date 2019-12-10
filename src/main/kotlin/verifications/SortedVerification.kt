@@ -59,7 +59,7 @@ class SortedVerification {
             executor.shutdown()
         }
 
-        private fun verifySortedArray(array: Array<Int>): Boolean {
+        public fun verifySortedArray(array: Array<Int>): Boolean {
             //An Array is sorted if the invariant A[i]<A[i+1] holds for any i
             for (index in 0 until array.size - 1) {
                 if (array[index] > array[index + 1]) {
